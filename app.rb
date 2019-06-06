@@ -32,7 +32,7 @@ class BookmarkManager < Sinatra::Application
   end
 
   patch '/bookmarks/:id' do
-    Book.update(params[:id], params[:title])
-    redirect '/bookmarks'
+    Book.update(params[:id], params[:title], params[:bookmark])
+    redirect('/bookmarks')
   end
 end

@@ -28,8 +28,22 @@ describe '.delete' do
   describe '.update' do
     it 'can update title' do 
       prepare_table
-      Book.update(1, 'Tortoise')
+      Book.update(1, 'Tortoise', nil)
       bookmark = Book.all
+      expect(bookmark.last.title).to eq('Tortoise')
+    end
+
+    it 'can update url' do 
+      prepare_table
+      Book.update(1, nil, "http://www.maers.com")
+      bookmark = Book.all
+      expect(bookmark.last.url).to eq("http://www.maers.com")
+    end
+    it 'can update url and title' do 
+      prepare_table
+      Book.update(1, 'Tortoise', "http://www.maers.com")
+      bookmark = Book.all
+      expect(bookmark.last.url).to eq("http://www.maers.com")
       expect(bookmark.last.title).to eq('Tortoise')
     end
   end

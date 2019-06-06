@@ -13,7 +13,7 @@ def go_to_update_form
   fill_in 'title', with: 'Ruby'
   fill_in 'url', with: 'http://www.ruby.org'
   click_button 'add'
-  within all(".class_for_marks")[0] do
+  within all(".class_for_marks")[3] do
     click_button("Update")
   end
 end

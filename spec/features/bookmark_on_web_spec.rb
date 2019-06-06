@@ -52,10 +52,26 @@ feature 'viewing bookmarks' do
     expect(page).to have_content('New url:')
   end
 
-  scenario 'user can update the title' do
-    go_to_update_form
+  scenario 'user can update the title and the url does not change' do
+    prepare_table # because we need to truncate records
+    visit '/bookmarks'
+    fill_in 'title', with: 'Ruby'
+    fill_in 'url', with: 'http://www.ruby.org'
+    click_button 'add'
+    expect(page).to have_link('Ruby', href: 'http://www.ruby.org')
+    within all(".class_for_marks")[3] do
+      click_button("Update")
+    end
     fill_in 'title', with: 'Tortoise'
     click_button 'Save'
-    expect(page).to have_content('Tortoise')
+    expect(page).to have_link('Tortoise', href: 'http://www.ruby.org')
+  end
+
+  scenario 'user updates the url but title does not change' do
+    prepare_table
+    go_to_update_form
+    fill_in 'url', with: 'http://www.maers.com'
+    click_button 'Save'
+    expect(page).to have_link('Ruby', href: 'http://www.maers.com')
   end
 end
