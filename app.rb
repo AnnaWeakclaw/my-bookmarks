@@ -3,6 +3,9 @@ require './lib/bookmark'
 
 
 class BookmarkManager < Sinatra::Application
+
+  # for overriding hidden
+  enable :sessions, :method_override
   get '/' do
     "Hello World!"
   end
@@ -18,8 +21,8 @@ class BookmarkManager < Sinatra::Application
     redirect('/bookmarks')
   end
 
-  post '/delete' do
-    Book.delete(params[:title])
+  delete '/bookmarks/:id' do
+    Book.delete(params[:id])
     redirect('/bookmarks')
 
   end

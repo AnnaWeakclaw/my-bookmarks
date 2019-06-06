@@ -34,8 +34,16 @@ feature 'viewing bookmarks' do
   scenario 'user provides title and the bookmark get deleted' do
     prepare_table
     visit('/bookmarks')
-    fill_in 'title', with: 'ASK JEEVES'
-    click_button "Delete"
-    expect(page).to_not have_content('ASK JEEVES')
+    fill_in 'title', with: 'Ruby'
+    fill_in 'url', with: 'http://www.ruby.org'
+    click_button 'add'
+    expect(page).to have_link('Ruby', href: 'http://www.ruby.org' )
+    # this deletes the fourth element
+    within all(".class_for_marks")[3] do
+      click_button("Delete")
+   end
+    
+    expect(current_path).to eq '/bookmarks'
+    expect(page).to_not have_content('Ruby')
   end
 end

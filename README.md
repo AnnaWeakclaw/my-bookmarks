@@ -31,6 +31,13 @@ So that I can save a website
 I would like to add the site's address and title to bookmark manager
 ```
 
+Add the usage of Delete function in CRUD
+```
+As a user
+So I can remove my bookmark from Bookmark Manager
+I want to delete a bookmark
+```
+
 ## Instructions
 1. Run _bundle install_
 2. Run _rackup -p 4567_

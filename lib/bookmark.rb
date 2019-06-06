@@ -45,12 +45,12 @@ class Book
     Book.new(new_bookmark[0]['id'], new_bookmark[0]['url'], new_bookmark[0]['title'])
   end
 
-  def self.delete(title)
+  def self.delete(id)
     connection = if ENV['RACK_ENV'] == 'test'
                    PG.connect(dbname: 'bookmark_manager_test')
                  else
                    PG.connect(dbname: 'bookmark_manager')
                end
-    connection.exec("DELETE FROM bookmarks WHERE title = '#{title}'")
+    connection.exec("DELETE FROM bookmarks WHERE id = '#{id}'")
   end
 end

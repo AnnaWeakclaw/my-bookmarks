@@ -20,7 +20,7 @@ end
 describe '.delete' do
   it 'deletes a bookmark from list' do
     prepare_table
-    Book.delete('ASK JEEVES')
+    Book.delete(1)
     bookmark = Book.all
     expect(bookmark).not_to include('ASK JEEVES')
   end
