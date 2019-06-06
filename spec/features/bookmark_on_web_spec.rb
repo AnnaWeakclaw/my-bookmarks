@@ -21,7 +21,7 @@ feature 'viewing bookmarks' do
     fill_in 'title', with: 'ZOINKS'
     fill_in 'url', with: 'http://www.zoinks.com'
     click_button 'add'
-    expect(page).to have_content('ZOINKS')
+    expect(page).to have_link('ZOINKS', href: 'http://www.zoinks.com' )
   end
 
   scenario 'user can click title and goes to website' do
