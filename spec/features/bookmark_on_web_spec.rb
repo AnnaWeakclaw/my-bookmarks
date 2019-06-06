@@ -46,4 +46,16 @@ feature 'viewing bookmarks' do
     expect(current_path).to eq '/bookmarks'
     expect(page).to_not have_content('Ruby')
   end
+
+  scenario 'user can open the update form' do
+    go_to_update_form
+    expect(page).to have_content('New url:')
+  end
+
+  scenario 'user can update the title' do
+    go_to_update_form
+    fill_in 'title', with: 'Tortoise'
+    click_button 'Save'
+    expect(page).to have_content('Tortoise')
+  end
 end

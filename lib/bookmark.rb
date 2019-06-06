@@ -51,6 +51,15 @@ class Book
                  else
                    PG.connect(dbname: 'bookmark_manager')
                end
-    connection.exec("DELETE FROM bookmarks WHERE id = '#{id}'")
+    connection.exec("DELETE FROM bookmarks WHERE id = '#{id}';")
+  end
+
+  def self.update(id, title)
+    connection = if ENV['RACK_ENV'] == 'test'
+      PG.connect(dbname: 'bookmark_manager_test')
+    else
+      PG.connect(dbname: 'bookmark_manager')
+    end
+    connection.exec("UPDATE bookmarks SET title = '#{title}' WHERE id = '#{id}';")
   end
 end

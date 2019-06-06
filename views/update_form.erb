@@ -1,0 +1,8 @@
+<form action="/bookmarks/<%= @id%>" method="post">
+  <label for="bookmark">New url:</label>
+  <input type="text" id="bookmark" name="bookmark"/>
+  <label for="title">New title:</label>
+  <input type="text" id="title" name="title"/>
+  <input type='hidden' name='_method' value='PATCH'/>
+  <button type="submit" value="save">Save</button>
+</form>

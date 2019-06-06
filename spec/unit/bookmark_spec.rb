@@ -22,7 +22,16 @@ describe '.delete' do
     prepare_table
     Book.delete(1)
     bookmark = Book.all
-    expect(bookmark).not_to include('ASK JEEVES')
+    expect(bookmark.length).to eq(2)
+  end
+
+  describe '.update' do
+    it 'can update title' do 
+      prepare_table
+      Book.update(1, 'Tortoise')
+      bookmark = Book.all
+      expect(bookmark.last.title).to eq('Tortoise')
+    end
   end
 end
 
