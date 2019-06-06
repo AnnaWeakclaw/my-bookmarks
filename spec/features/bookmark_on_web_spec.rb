@@ -74,4 +74,14 @@ feature 'viewing bookmarks' do
     click_button 'Save'
     expect(page).to have_link('Ruby', href: 'http://www.maers.com')
   end
+
+
+  scenario 'user updates the url and title' do
+    prepare_table
+    go_to_update_form
+    fill_in 'url', with: 'http://www.maers.com'
+    fill_in 'title', with: 'Tortoise'
+    click_button 'Save'
+    expect(page).to have_link('Tortoise', href: 'http://www.maers.com')
+  end
 end
