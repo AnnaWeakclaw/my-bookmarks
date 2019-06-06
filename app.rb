@@ -2,7 +2,7 @@ require 'sinatra/base'
 require './lib/bookmark'
 
 
-class Bookmark < Sinatra::Application
+class BookmarkManager < Sinatra::Application
   get '/' do
     "Hello World!"
   end

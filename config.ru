@@ -2,4 +2,4 @@
 
 require './app.rb'
 
-run Bookmark
+run BookmarkManager
