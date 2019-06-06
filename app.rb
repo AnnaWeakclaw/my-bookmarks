@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require './lib/bookmark'
-
+require './actual_setup_with_db_name'
 
 class BookmarkManager < Sinatra::Application
 
@@ -16,7 +16,6 @@ class BookmarkManager < Sinatra::Application
   end
 
   post '/new_bookmark' do
-    
     Book.add(params[:bookmark], params[:title])
     redirect('/bookmarks')
   end
