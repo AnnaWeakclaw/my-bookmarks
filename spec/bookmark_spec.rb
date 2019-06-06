@@ -4,8 +4,16 @@ describe '.all' do
   it 'returns a list of bookmarks' do
     prepare_table
     bookmark = Book.all
-    expect(bookmark.last.title).to include('GOOGLE')
-     expect(bookmark.first.title).to include('ASK JEEVES')
+    expect(bookmark.last.title).to eq('GOOGLE')
+     expect(bookmark.first.title).to eq('ASK JEEVES')
+  end
+end
+
+describe '.create' do
+  it 'adds new bookmarks to the list' do
+    Book.add("http://ruby.org", "Ruby")
+    bookmark = Book.all
+    expect(bookmark.last.title).to eq('Ruby')
   end
 end
 
